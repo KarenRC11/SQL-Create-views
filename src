@@ -1,0 +1,30 @@
+--Sintaxis
+CREATE VIEW  nombre  AS query  
+WITH CHECK OPTION (constraint);
+
+
+CREATE VIEW  emp45          
+AS SELECT id,  last_name, first_name, title                  
+FROM s_emp                  
+WHERE DEPT_ID = 45;
+
+--Podemos ver los datos del view con la siguiente consulta:
+                  
+SELECT *                  
+FROM emp45;  
+
+--A través de este view podemos hacer actualizaciones, por ejemplo:                      
+
+UPDATE emp45                      
+SET dept_id = 10                      
+WHERE id = 10;
+
+--Si ahora haces la consulta al view verás que se eliminó un récord. 
+
+CREATE VIEW  emp45          
+AS SELECT id,  last_name, first_name, title                 
+FROM s_emp                  
+WHERE DEPT_ID = 45               
+WITH CHECK OPTION;
+
+--La cláusula WITH CHECK OPTION impide hacer actualizaciones a través del view
